@@ -20,9 +20,10 @@
         "text": "Over the past week, how difficult was this activity for you?",
         "choices":[
           {
-            "text":"Easy",
-            "value":"easy",
+            "text":"Kakki",
+            "value":"Easy",
             "color":"#258313"
+            //"color":"#FFFFFF"
           },
           {
             "text":"Moderate",

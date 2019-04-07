@@ -53,9 +53,17 @@ public class DemographicsSurveyOMHDatapoint extends OMHDataPointBuilder {
 
     public JSONObject getBody() {
         HashMap map = new HashMap();
-        map.put("gender", this.surveyResult.getGender());
-        map.put("age", this.surveyResult.getAge());
-        map.put("zipcode",this.surveyResult.getZip());
+        map.put("bedtime", this.surveyResult.getBedtime());
+        map.put("sleeptime", this.surveyResult.getSleepTime());
+        map.put("fallSleeptTime", this.surveyResult.getFallSleepTime());
+        map.put("wakeupCount", this.surveyResult.getWakeupCount());
+        map.put("awakeTime",this.surveyResult.getAwakeTime());
+        map.put("wakeupLength",this.surveyResult.getWakeupLength());
+        map.put("outOfBedTime",this.surveyResult.getOutOfBedTime());
+        map.put("sleepQuality",this.surveyResult.getSleepQuality());
+//        map.put("gender", this.surveyResult.getGender());
+//        map.put("age", this.surveyResult.getAge());
+//        map.put("zipcode",this.surveyResult.getZip());
         return new JSONObject(map);
     }
 

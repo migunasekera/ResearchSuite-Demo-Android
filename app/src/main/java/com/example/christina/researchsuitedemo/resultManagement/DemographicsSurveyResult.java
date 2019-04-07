@@ -21,31 +21,67 @@ public class DemographicsSurveyResult extends RSRPIntermediateResult {
 //    private String travelPlans;
 //    private String[] daysOnCampus;
 
-    private String gender;
-    private Integer age;
-    private String zipcode;
+    private String bedtime;
+    private String sleeptime;
+    private String fallSleepTime;
+    private String wakeupCount;
+    private String wakeupLength;
+    private String awakeTime;
+    private String outOfBedTime;
+    private String sleepQuality;
 
 
-    public DemographicsSurveyResult(UUID uuid, String taskIdentifier, UUID taskRunUUID, String gender, Integer age, String zipcode) {
+    public DemographicsSurveyResult(UUID uuid,
+                                    String taskIdentifier,
+                                    UUID taskRunUUID,
+                                    String bedtime,
+                                    String sleeptime,
+                                    String fallSleepTime,
+                                    String wakeupCount,
+                                    String wakeupLength,
+                                    String awakeTime,
+                                    String outOfBedTime,
+                                    String sleepQuality) {
         super(TYPE, uuid, taskIdentifier, taskRunUUID);
 //        this.travelPlans = travelPlans;
 //        this.daysOnCampus = daysOnCampus;
 
-        this.gender = gender;
-        this.age = age;
-        this.zipcode = zipcode;
+        this.bedtime = bedtime;
+        this.sleeptime = sleeptime;
+        this.fallSleepTime = fallSleepTime;
+        this.wakeupCount = wakeupCount;
+        this.wakeupLength = wakeupLength;
+        this.awakeTime = awakeTime;
+        this.outOfBedTime = outOfBedTime;
+        this.sleepQuality = sleepQuality;
 
     }
 
-    public String getGender() {
-        return gender;
+    public String getBedtime(){
+        return bedtime;
     }
-    public Integer getAge(){
-        return age;
+    public String getSleepTime(){
+        return sleeptime;
     }
-    public String getZip(){
-        return zipcode;
+    public String getFallSleepTime(){
+        return fallSleepTime;
     }
+    public String getWakeupCount(){
+        return wakeupCount;
+    }
+    public String getAwakeTime() {
+        return awakeTime;
+    }
+    public String getWakeupLength(){
+        return wakeupLength;
+    }
+    public String getOutOfBedTime(){
+        return outOfBedTime;
+    }
+    public String getSleepQuality(){
+        return sleepQuality;
+    }
+
 
 //    public String getTravelPlans() {
 //        return travelPlans;
@@ -76,9 +112,14 @@ public class DemographicsSurveyResult extends RSRPIntermediateResult {
         @Override
         public RSRPIntermediateResult transform(String taskIdentifier, UUID taskRunUUID, Map<String, Object> parameters) {
 
-            String gender = extractResult(parameters,"gender");
-            Integer age = extractResult(parameters,"age");
-            String zipcode = extractResult(parameters,"zip_code");
+            String bedtime = extractResult(parameters,"bedtime");
+            String sleeptime = extractResult(parameters,"sleeptime");
+            String fallSleepTime = extractResult(parameters,"fallSleepTime");
+            String wakeupCount = extractResult(parameters,"wakeupCount");
+            String wakeupLength = extractResult(parameters,"wakeupLength");
+            String awakeTime = extractResult(parameters,"awakeTime");
+            String outOfBedTime = extractResult(parameters,"outOfBedTime");
+            String sleepQuality = extractResult(parameters,"sleepQuality");
 
 
 
@@ -86,13 +127,21 @@ public class DemographicsSurveyResult extends RSRPIntermediateResult {
                     UUID.randomUUID(),
                     taskIdentifier,
                     taskRunUUID,
-                    gender,
-                    age,
-                    zipcode
+                    bedtime,
+                    sleeptime,
+                    fallSleepTime,
+                    wakeupCount,
+                    wakeupLength,
+                    awakeTime,
+                    outOfBedTime,
+                    sleepQuality
+//                gender,
+//                age,
+//                zipcode
             );
 
-            StepResult firstStepResult = (StepResult) (parameters.get("gender") != null ? parameters.get("gender") : parameters.get("employment"));
-
+//            StepResult firstStepResult = (StepResult) (parameters.get("gender") != null ? parameters.get("gender") : parameters.get("employment"));
+            StepResult firstStepResult = (StepResult) (parameters.get("bedtime") != null ? parameters.get("bedtime") : parameters.get("sleepQuality"));
 //            StepResult firstStepResult = (StepResult) (parameters.get("days_on_campus") != null ? parameters.get("days_on_campus") : parameters.get("travel_plans"));
 //            StepResult lastStepResult = (StepResult) (parameters.get("travel_plans") != null ? parameters.get("travel_plans") : parameters.get("days_on_campus"));
 

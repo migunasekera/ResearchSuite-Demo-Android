@@ -33,21 +33,34 @@ public class DemographicsSurveyResultTransformer implements RSRPFrontEnd {
     @Override
     public RSRPIntermediateResult transform(String taskIdentifier, UUID taskRunUUID, Map<String, Object> parameters) {
 
-        String gender = extractResult(parameters,"gender");
-        Integer age = extractResult(parameters,"age");
-        String zipcode = extractResult(parameters,"zip_code");
+        String bedtime = extractResult(parameters,"bedtime");
+        String sleeptime = extractResult(parameters,"sleeptime");
+        String fallSleepTime = extractResult(parameters,"fallSleepTime");
+        String wakeupCount = extractResult(parameters,"wakeupCount");
+        String wakeupLength = extractResult(parameters,"wakeupLength");
+        String awakeTime = extractResult(parameters,"awakeTime");
+        String outOfBedTime = extractResult(parameters,"outOfBedTime");
+        String sleepQuality = extractResult(parameters,"sleepQuality");
 
 
         DemographicsSurveyResult result = new DemographicsSurveyResult(
                 UUID.randomUUID(),
                 taskIdentifier,
                 taskRunUUID,
-                gender,
-                age,
-                zipcode
+                bedtime,
+                sleeptime,
+                fallSleepTime,
+                wakeupCount,
+                wakeupLength,
+                awakeTime,
+                outOfBedTime,
+                sleepQuality
+//                gender,
+//                age,
+//                zipcode
         );
 
-        StepResult firstStepResult = (StepResult) (parameters.get("gender") != null ? parameters.get("gender") : parameters.get("zipcode"));
+        StepResult firstStepResult = (StepResult) (parameters.get("bedtime") != null ? parameters.get("bedtime") : parameters.get("sleepQuality"));
         //StepResult lastStepResult = (StepResult) (parameters.get("employment") != null ? parameters.get("employment") : parameters.get("gender"));
 
         if (firstStepResult != null) {
